@@ -1,4 +1,4 @@
-import { Connection, createConnection, getConnectionOptions } from "typeorm";
+import { createConnection } from "typeorm";
 
 require("dotenv").config();
 
@@ -19,11 +19,15 @@ const config: any = {
       rejectUnauthorized: false,
     },
   },
-  entities: [rootDir + `/database/entities/*.${extensionFile}`],
-  migrations: [rootDir + `/database/migrations/*.${extensionFile}`],
+  entities: [
+    rootDir + `/database/entities/*.${extensionFile}`
+  ],
+  migrations: [
+    rootDir + `/database/migrations/*.${extensionFile}`
+  ],
   cli: {
-    migrationsDir: rootDir + "/database/migrations",
-  },
+    "migrationsDir": './' + rootDir + "/database/migrations"
+  }
 };
 
 createConnection(config).catch((error) => console.log(error));
