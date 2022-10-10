@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const typeorm_1 = require("typeorm");
+var typeorm_1 = require("typeorm");
 require("dotenv").config();
-const rootDir = process.env.NODE_ENV === "development" ? "src" : "build";
-const extensionFile = process.env.NODE_ENV === "development" ? "ts" : "build";
-const config = {
+var rootDir = process.env.NODE_ENV === "development" ? "src" : "build";
+var extensionFile = process.env.NODE_ENV === "development" ? "ts" : "build";
+var config = {
     type: "postgres",
     host: process.env.TYPEORM_HOST,
     port: process.env.TYPEORM_PORT,
@@ -18,10 +18,14 @@ const config = {
             rejectUnauthorized: false,
         },
     },
-    entities: [rootDir + `/database/entities/*.${extensionFile}`],
-    migrations: [rootDir + `/database/migrations/*.${extensionFile}`],
+    entities: [
+        rootDir + "/database/entities/*.".concat(extensionFile)
+    ],
+    migrations: [
+        rootDir + "/database/migrations/*.".concat(extensionFile)
+    ],
     cli: {
-        migrationsDir: rootDir + "/database/migrations",
-    },
+        "migrationsDir": './' + rootDir + "/database/migrations"
+    }
 };
-(0, typeorm_1.createConnection)(config).catch((error) => console.log(error));
+(0, typeorm_1.createConnection)(config).catch(function (error) { return console.log(error); });
